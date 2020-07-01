@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" initial-scale=1.0">
+<title>Application letter generator</title>
+<style type="text/css">
+*{box-sizing:border-box;}
+body,html{padding:0; margin:0;}
+.l-container{padding:15px; border-left:10px solid skyblue;
+           border-right: 10px solid skyblue; display:none;}
+#letter{ font-weight:300; font-size:18px;line-height:30px;}
+#myinfo, #date, #jobad{ font-size:17px; font-weight:800;}
+#conclusion, #num{font-size:20px;}
+.btn{margin:0 auto; width:50%; height:200px; background:skyblue;margin-top:100px;}
+.btn button { text-align: center; margin:0 auto; display:block; height:40px; width:100%;
+    background: linear-gradient(to top right,blue,blue);outline:none;
+        color:#fff; font-weight:300;}
+ .btn button:hover{opacity:0.2; transition:1s;color:yellow;font-weight:800;}
+   #gen{ animation-name:myan;
+         animation-iteration-count:infinite;
+         animation-duration:1s;
+         animation-timing-function: linear;
+         }
+         @keyframes myan{
+         0%{position: relative; bottom:2px; opacity:0.2}}
+         .container{padding:15px; width:100%; background:linear-gradient(to top right, red, purple, purple);
+           animation-name:backr;
+           animation-timing-function: linear;
+           animation-iteration-count: infinite;
+           animation-duration:10s;}
+           @keyframes backr{
+           0%{ background: linear-gradient(to top right,red, purple); opacity:0.5;}
+           20%{ opacity:0.7;}
+           50% {background: linear-gradient(to top right,green,#00ff00); opacity:0.3;}}
+           h1{text-align: center;}
+</style>
+</head>
+<body>
+<div class="l-container" id="cont">
+<p id="myinfo"></p>
+<p id="date"></p>
+<p id="jobad"></p>
+<p id="letter"></p>
+<p id="conclusion"> </p>
+<p id="num"></p>
+<button type="button" onclick="getLetter()">Generate Again</button>
+</div>
+<div class="container">
+<h1> Job Application Letter Generator</h1>
+<h2>Easily generate job application latter with Raph AI Generator</h2>
+<div class="btn">
+<button onclick="getLetter()" id="gen">Generate</button>
+<button id="about" onclick="devInfo()">Contact The Developer</button>
+<button onclick="showDate()">Today's Date</button>
+<button onclick="rbug()">Report Bug</button>
+<button onclick="about()">About</button>
+</div>
+<script>
+function getLetter(){
+var welmsg = alert("Hi dear, am an AI developed by Raphael Akpofure my work is to help you create an application letter easily, am going to ask you some few questions to better personalize your application letter. \n To generate the application letter now click ok to continue");
+var getName = prompt("Firstly, you are going to tell me your First and Last name");
+var getAddress = prompt("Wow!" + " " + getName + " " + "is such a nice name. \n Now tell me your address");
+var jobAddress = prompt("You probably said" + " " + getAddress + " " + "is your current address.\n Now" + " " + getName + " " + "tell me the name and the location of the job you want to apply for." );
+var jobPos = prompt("Got it! for me to understand the kind of job you are applying for please tell me the position of the job you are applying for, example: Manager, Director, Receptionist etc.");
+var date = new Date();
+var getPhone = prompt("That means" + " " + getName + " " + "You are applying for" + " " + jobPos + " " + "at" + " " + jobAddress + " " + ".\n The application letter is almost ready. lastly, tell me your current phone number." + " " + getName + " " + "please make sure it is a valid phone number.");
+var result = document.getElementById("letter").innerHTML= "<p>" + "Dear Mr/Mrs," + "<p>" + "I am reaching out to you regarding the posting for the" + " " + jobPos + " " + "position I found on" + " " + jobAddress + "." + " " + "I have a great interest in this position and would appreciate your consideration as a candidate for the role. In my previous experience, I worked as" + " " + jobPos + " " + "across several different industries. I have worked in my current role as" + " " + jobPos + " " + "for the past four years. Prior to this job, which shows my ability to advance in my career. I have a strong passion for helping others, which is why I have found such fulfillment in" + " " + jobPos + "," + " " + "providing support to my fellow employees and assisting them in ways that benefit them both personally and professionally, which I feel would be a great asset in the position with your company. I believe my innovative nature and strong skill set will help me succeed. I have strong communication skills, which are vital to success in the" + " " + jobPos + " " + "field. I've also worked with skilled" + " " + jobPos + " " + "professionals who have shared their insights and experience with me. Some of my strongest skills include my ability to increase employee retention through the improvement of company culture and to develop training and education programs to ensure all employees have access to the information they need to succeed and comply with legal requirements. I appreciate your time in reviewing this letter and hope to hear from you in regard to the next steps in the hiring process. If you have any questions or need any additional information, please don’t hesitate to contact me.";
+var congr = alert("Congratulations" + " " + getName + " " + "your application letter is ready\n Click ok to view");
+var a= document.getElementById("myinfo").innerHTML= getName + "<br>" + getAddress;
+var b=document.getElementById("date").innerHTML= date.toDateString();
+var c=document.getElementById("jobad").innerHTML= jobAddress;
+var d=document.getElementById("conclusion").innerHTML= "Sincerely," + " " + getName;
+var e=document.getElementById("num").innerHTML= getPhone;
+var f=document.getElementById("cont").style.display= "block";
+}
+
+</script>
+<script type="text/javascript">
+function showDate(){
+var curDate=new Date();
+alert(curDate);}
+</script>
+<script>
+function devInfo(){
+alert("Contact the developer via\n WhatsApp: +234-811-225-7699\n Email: raphtechclients@gmail.com\n https://twitter.com/raphaelakpofure\n https://facebook.com/raphaeltrusttech\n Call: +234-811-225-7699");}
+</script>
+<script>
+function rbug(){
+alert("Did you found any bug? please send us message on WhatsApp\n +234-811-225-7699");}
+
+</script>
+<script>
+function about(){
+alert("Creating an application letter hasn't been easy for some individual around the globe that's the core reason Raph AI Generator was developed, You can now easily generate job application letter easily with this free software. The Raph AI Generator is user friendly that only needs some basic information from such as your name and address for easy composing. Some core functionality of Raph AI Generator is that it was built with it's users in mind, some other built-in features include outputting current date and time. The Raph AI Generator is absolutely free, you can generate as many application letter you want. for more info contact us via WhatsApp +234-811-225-7699 or via Email raphaeltrust89@gmail.com");}
+</script>
+<script src="bootstrap.js"></script>
+
+
+</script>
+</body>
+</html>
