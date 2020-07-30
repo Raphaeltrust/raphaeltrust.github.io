@@ -1,102 +1,582 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width" initial-scale=1.0">
-<title>Application letter generator</title>
+<meta name="viewport" content="width=device-width" initial-scale=1"/>
+<title>Calculator</title>
+<script type="text/javascript">alert("Tips 🔮:\nTouch anywhere on the screen to open Calculator 📲");</script>
 <style type="text/css">
 *{box-sizing:border-box;}
-body,html{padding:0; margin:0;}
-.l-container{padding:15px; border-left:10px solid skyblue;
-           border-right: 10px solid skyblue; display:none;}
-#letter{ font-weight:300; font-size:18px;line-height:30px;}
-#myinfo, #date, #jobad{ font-size:17px; font-weight:800;}
-#conclusion, #num{font-size:20px;}
-.btn{margin:0 auto; width:50%; height:200px; background:skyblue;margin-top:100px;}
-.btn button { text-align: center; margin:0 auto; display:block; height:40px; width:100%;
-    background: linear-gradient(to top right,blue,blue);outline:none;
-        color:#fff; font-weight:300;}
- .btn button:hover{opacity:0.2; transition:1s;color:yellow;font-weight:800;}
-   #gen{ animation-name:myan;
-         animation-iteration-count:infinite;
-         animation-duration:1s;
-         animation-timing-function: linear;
-         }
-         @keyframes myan{
-         0%{position: relative; bottom:2px; opacity:0.2}}
-         .container{padding:15px; width:100%; background:linear-gradient(to top right, red, purple, purple);
-           animation-name:backr;
-           animation-timing-function: linear;
-           animation-iteration-count: infinite;
-           animation-duration:10s;}
-           @keyframes backr{
-           0%{ background: linear-gradient(to top right,red, purple); opacity:0.5;}
-           20%{ opacity:0.7;}
-           50% {background: linear-gradient(to top right,green,#00ff00); opacity:0.3;}}
-           h1{text-align: center;}
+body,html{margin:0; padding:0;}
+#phone{height:550px;width:300px; background:#fff;
+margin:0 auto; margin-top:20px;border-radius:15px;
+border:3px solid black;}
+#cbody{display:none;height:515px;width:100%; background:red; border-radius:15px;
+animation-name:anikey2; animation-duration:1s; animation-timing-function:ease;}
+#screen{width:100%;height:120px; padding:10px; background: #000;color:#fff;
+outline:none;border:none; font-size:35px;}
+form input {width:70px;height:65px; texte-align: center; background:red;border:0;
+color:#fff; font-size:25px; outline:none;}
+#bar{height:20px; display:none; width:100%;border-radius:14px 14px 0px 0px;}
+#bar2{height:20px; width:100%;border-radius:14px 14px 0px 0px;}
+#equal, #settings, #home,#back{background:;font-size:35px;height:50px;}
+#settings{font-weight:900;}
+#home, #back{margin-left:35px;font-size:25px;}
+#back{position: relative; bottom:80px;color:black;left:50px; background:rgba(225,0,0,0.0);color:#fff; outline:none;border:none;}
+form input:hover{animation-name:anikey1; animation-duration:1s;
+animation-timing-function:linear;}
+form{background:red;}
+@keyframes anikey1{
+10%{background:rgba(225,225,225,0.2);width:55px;height:45px;border-radius:50px;}
+100%{background:rgba(225,225,225,0.4);border-radius:50px;}}
+@keyframes anikey2{
+0%{opacity:0;}
+50%{opacity:0.4;}}
+#mysettings{height:520px;display:none;border-bottom:25px solid black;border-radius:0px 0px 10px 10px;width:100%;
+padding:10px;
+}
+#mysettings div{width:50px; height:50px; border:thin solid lightgray;
+}
+#mysettings label{color:lightgray; font-weight:400; position:relative; left:60px; top:35px;}
+#defaultTheme{background:red;
+}
+#blueTheme{background:blue;
+}
+#orangeTheme{background:orange;
+}
+#grayTheme{background:gray;
+}
+#greenTheme{background: green;
+}
+#whiteTheme{background:#fff;
+}
+#blackTheme{background:#000;}
+#mysettings span{color:#fff; display:block;text-align: center;
+border-bottom:thin solid lightgray;}
 </style>
 </head>
-<body>
-<div class="l-container" id="cont">
-<p id="myinfo"></p>
-<p id="date"></p>
-<p id="jobad"></p>
-<p id="letter"></p>
-<p id="conclusion"> </p>
-<p id="num"></p>
-<button type="button" onclick="getLetter()">Generate Again</button>
-</div>
-<div class="container">
-<h1> Job Application Letter Generator</h1>
-<h2>Easily generate job application latter with Raph AI Generator</h2>
-<div class="btn">
-<button onclick="getLetter()" id="gen">Generate</button>
-<button id="about" onclick="devInfo()">Contact The Developer</button>
-<button onclick="showDate()">Today's Date</button>
-<button onclick="rbug()">Report Bug</button>
-<button onclick="about()">About</button>
-</div>
-<script>
-function getLetter(){
-var welmsg = alert("Hi dear, am an AI developed by Raphael Akpofure my work is to help you create an application letter easily, am going to ask you some few questions to better personalize your application letter. \n To generate the application letter now click ok to continue");
-var getName = prompt("Firstly, you are going to tell me your First and Last name");
-var getAddress = prompt("Wow!" + " " + getName + " " + "is such a nice name. \n Now tell me your address");
-var jobAddress = prompt("You probably said" + " " + getAddress + " " + "is your current address.\n Now" + " " + getName + " " + "tell me the name and the location of the job you want to apply for." );
-var jobPos = prompt("Got it! for me to understand the kind of job you are applying for please tell me the position of the job you are applying for, example: Manager, Director, Receptionist etc.");
-var date = new Date();
-var getPhone = prompt("That means" + " " + getName + " " + "You are applying for" + " " + jobPos + " " + "at" + " " + jobAddress + " " + ".\n The application letter is almost ready. lastly, tell me your current phone number." + " " + getName + " " + "please make sure it is a valid phone number.");
-var result = document.getElementById("letter").innerHTML= "<p>" + "Dear Mr/Mrs," + "<p>" + "I am reaching out to you regarding the posting for the" + " " + jobPos + " " + "position I found on" + " " + jobAddress + "." + " " + "I have a great interest in this position and would appreciate your consideration as a candidate for the role. In my previous experience, I worked as" + " " + jobPos + " " + "across several different industries. I have worked in my current role as" + " " + jobPos + " " + "for the past four years. Prior to this job, which shows my ability to advance in my career. I have a strong passion for helping others, which is why I have found such fulfillment in" + " " + jobPos + "," + " " + "providing support to my fellow employees and assisting them in ways that benefit them both personally and professionally, which I feel would be a great asset in the position with your company. I believe my innovative nature and strong skill set will help me succeed. I have strong communication skills, which are vital to success in the" + " " + jobPos + " " + "field. I've also worked with skilled" + " " + jobPos + " " + "professionals who have shared their insights and experience with me. Some of my strongest skills include my ability to increase employee retention through the improvement of company culture and to develop training and education programs to ensure all employees have access to the information they need to succeed and comply with legal requirements. I appreciate your time in reviewing this letter and hope to hear from you in regard to the next steps in the hiring process. If you have any questions or need any additional information, please don’t hesitate to contact me.";
-var congr = alert("Congratulations" + " " + getName + " " + "your application letter is ready\n Click ok to view");
-var a= document.getElementById("myinfo").innerHTML= getName + "<br>" + getAddress;
-var b=document.getElementById("date").innerHTML= date.toDateString();
-var c=document.getElementById("jobad").innerHTML= jobAddress;
-var d=document.getElementById("conclusion").innerHTML= "Sincerely," + " " + getName;
-var e=document.getElementById("num").innerHTML= getPhone;
-var f=document.getElementById("cont").style.display= "block";
+<body id="body">
+<div id="phone"onclick="openCal()"><div><img id="bar2"src="bar2.png"><img id="bar"src="bar.png">
+<div id="myhome">
+<div id="mysettings"><span>Settings</span>
+<label>Default Theme</label><div id="defaultTheme"onclick="showDefault()"></div><label>White Theme</label><div id="whiteTheme"onclick="showWhite()"></div><label>Green Theme</label><div id="greenTheme" onclick="showGreen()"></div><label>Orange Theme</label><div id="orangeTheme"onclick="showOrange()"></div><label>Blue Theme</label><div id="blueTheme"onclick="showBlue()"></div><label>Gray Theme</label><div id="grayTheme"onclick="showGray()"></div>
+<label>BlackTheme</label><div id="blackTheme"onclick="showBlack()"></div></div></div>
+<div id="cbody">
+<form name="calculator" id="form">
+<input type="text"id="screen"name="screen"disabled/>
+<input type="button"id="one" value="1" name="one" onClick="document.calculator.screen.value+='1'">
+<input type="button" value="2"id="two" name="two" onClick="document.calculator.screen.value+='2'">
+<input type="button" value="3"id="three" name="three" onClick="document.calculator.screen.value+='3'">
+<input type="button" value="-"id="minus" name="minus" onClick="document.calculator.screen.value+='-'">
+<br>
+<input type="button" value="4"id="four" name="four" onClick="document.calculator.screen.value+='4'">
+<input type="button" value="5"id="five"name="five" onClick="document.calculator.screen.value+='5'">
+<input type="button" value="6"id="six" name="six" onClick="document.calculator.screen.value+='6'">
+<input type="button" value="X"id="times" name="times" onClick="document.calculator.screen.value+='*'">
+<br>
+<input type="button" value="7"id="seven" name="seven" onClick="document.calculator.screen.value+='7'">
+<input type="button" value="8"id="eight" name="eight" onClick="document.calculator.screen.value+='8'">
+<input type="button" value="9"id="nine" name="nine" onClick="document.calculator.screen.value+='9'">
+<input type="button" value="+"id="plus" name="plus" onClick="document.calculator.screen.value+='+'">
+<br>
+<input type="button" value="0"id="zero" name="zero" onClick="document.calculator.screen.value+='0'">
+<input type="button" value="."id="dot" name="decimal" onClick="document.calculator.screen.value+='.'">
+<input type="button" value="00"id="zeroo" name="doublezero" onClick="document.calculator.screen.value+='00'">
+<input type="button" value="÷"id="devide" name="devide" onClick="document.calculator.screen.value+='/'">
+<br>
+<input type="button" value="%"id="perc"name="percentage" onClick="document.calculator.screen.value+='%'">
+<input type="button" value="("id="brao"name="braopen" onClick="document.calculator.screen.value+='('">
+<input type="button" value=")"id="brac" name="braclose" onClick="document.calculator.screen.value+=')'">
+<input type="reset" value="DEL"id="del" name="delete"><br>
+<input type="button" value="&#8592;"id="home"onClick="homeTab()">
+<input type="button" id="equal"value="=" name="equal" onClick="document.calculator.screen.value=eval(document.calculator.screen.value)">
+<input type="button" value="&#9788;"id="settings"onclick="openSettings()">
+</form>
+</div></div></div>
+<button onclick="homeTab()" id="back">&#8592;</button>
+<script type="text/javascript">
+function openCal(){
+var a=document.getElementById("cbody").style.display="block";
+var b=a=document.getElementById("phone").style.backgroundColor="black";
+var c=a=document.getElementById("bar").style.display="block";
+var d=document.getElementById("bar2").style.display="none";
+var e=document.getElementById("back").style.display="block";
 }
-
 </script>
 <script type="text/javascript">
-function showDate(){
-var curDate=new Date();
-alert(curDate);}
+function homeTab(){
+var ag=document.getElementById("cbody").style.display="none";
+var bg=document.getElementById("bar2").style.display="block";
+var cf=document.getElementById("bar").style.display="none";
+var f=document.getElementById("phone").style.backgroundColor="#fff";
+var g=document.getElementById("back").style.display="none";
+}
+</script>
+<script type="text/javascript">
+function openSettings(){
+var g=document.getElementById("mysettings").style.display="block";
+var e=document.getElementById("cbody").style.visibility="hidden";
+var p=document.getElementById("phone").style.backgroundColor="white";
+}
+</script>
+<script type="text/javascript">
+function showGreen(){
+var g=document.getElementById("cbody").style.backgroundColor="green";
+var p=document.getElementById("mysettings").style.display="none";
+var h=document.getElementById("cbody").style.visibility="visible";
+var j=document.getElementById("form").style.backgroundColor="green";
+var r=document.getElementById("settings").style.backgroundColor="green";
+var a=document.getElementById("one").style.backgroundColor="green";
+var b=document.getElementById("two").style.backgroundColor="green";
+var c=document.getElementById("three").style.backgroundColor="green";
+var d=document.getElementById("four").style.backgroundColor="green";
+var e=document.getElementById("five").style.backgroundColor="green";
+var f=document.getElementById("six").style.backgroundColor="green";
+var k=document.getElementById("seven").style.backgroundColor="green";
+var i=document.getElementById("eight").style.backgroundColor="green";
+var l=document.getElementById("nine").style.backgroundColor="green";
+var m=document.getElementById("del").style.backgroundColor="green";
+var n=document.getElementById("dot").style.backgroundColor="green";
+var o=document.getElementById("zero").style.backgroundColor="green";
+var p=document.getElementById("perc").style.backgroundColor="green";
+var q=document.getElementById("equal").style.backgroundColor="green";
+var r=document.getElementById("home").style.backgroundColor="green";
+var s=document.getElementById("minus").style.backgroundColor="green";
+var t=document.getElementById("del").style.backgroundColor="green";
+var u=document.getElementById("zeroo").style.backgroundColor="green";
+var v=document.getElementById("devide").style.backgroundColor="green";
+var w=document.getElementById("plus").style.backgroundColor="green";
+var x=document.getElementById("times").style.backgroundColor="green";
+var y=document.getElementById("brao").style.backgroundColor="green";
+var z=document.getElementById("brac").style.backgroundColor="green";
+var screeN=document.getElementById("screen").style.backgroundColor="black";
+
+var jtd=document.getElementById("form").style.color="#fff";
+var ffr=document.getElementById("settings").style.color="#fff";
+var ta=document.getElementById("one").style.color="#fff";
+var hb=document.getElementById("two").style.color="#fff";
+var ch=document.getElementById("three").style.color="#fff";
+var yd=document.getElementById("four").style.color="#fff";
+var te=document.getElementById("five").style.color="#fff";
+var fh=document.getElementById("six").style.color="#fff";
+var kh=document.getElementById("seven").style.color="#fff";
+var ig=document.getElementById("eight").style.color="#fff";
+var lh=document.getElementById("nine").style.color="#fff";
+var mh=document.getElementById("del").style.color="#fff";
+var ny=document.getElementById("dot").style.color="#fff";
+var oh=document.getElementById("zero").style.color="#fff";
+var ph=document.getElementById("perc").style.color="#fff";
+var qg=document.getElementById("equal").style.color="#fff";
+var rg=document.getElementById("home").style.color="#fff";
+var sf=document.getElementById("minus").style.color="#fff";
+var tg=document.getElementById("del").style.color="#fff";
+var u=document.getElementById("zeroo").style.color="#fff";
+var vg=document.getElementById("devide").style.color="#fff";
+var wt=document.getElementById("plus").style.color="#fff";
+var xg=document.getElementById("times").style.color="#fff";
+var yg=document.getElementById("brao").style.color="#fff";
+var zg=document.getElementById("brac").style.color="#fff";
+var screN=document.getElementById("screen").style.color="#fff";
+}</script>
+
+<script type="text/javascript">
+function showOrange(){
+var g=document.getElementById("cbody").style.backgroundColor="orange";
+var p=document.getElementById("mysettings").style.display="none";
+var h=document.getElementById("cbody").style.visibility="visible";
+var j=document.getElementById("form").style.backgroundColor="orange";
+var r=document.getElementById("settings").style.backgroundColor="orange";
+var a=document.getElementById("one").style.backgroundColor="orange";
+var b=document.getElementById("two").style.backgroundColor="orange";
+var c=document.getElementById("three").style.backgroundColor="orange";
+var d=document.getElementById("four").style.backgroundColor="orange";
+var e=document.getElementById("five").style.backgroundColor="orange";
+var f=document.getElementById("six").style.backgroundColor="orange";
+var k=document.getElementById("seven").style.backgroundColor="orange";
+var i=document.getElementById("eight").style.backgroundColor="orange";
+var l=document.getElementById("nine").style.backgroundColor="orange";
+var m=document.getElementById("del").style.backgroundColor="orange";
+var n=document.getElementById("dot").style.backgroundColor="orange";
+var o=document.getElementById("zero").style.backgroundColor="orange";
+var p=document.getElementById("perc").style.backgroundColor="orange";
+var q=document.getElementById("equal").style.backgroundColor="orange";
+var r=document.getElementById("home").style.backgroundColor="orange";
+var s=document.getElementById("minus").style.backgroundColor="orange";
+var t=document.getElementById("del").style.backgroundColor="orange";
+var u=document.getElementById("zeroo").style.backgroundColor="orange";
+var v=document.getElementById("devide").style.backgroundColor="orange";
+var w=document.getElementById("plus").style.backgroundColor="orange";
+var x=document.getElementById("times").style.backgroundColor="orange";
+var y=document.getElementById("brao").style.backgroundColor="orange";
+var z=document.getElementById("brac").style.backgroundColor="orange";
+var screeN=document.getElementById("screen").style.backgroundColor="black";
+
+var jtd=document.getElementById("form").style.color="#fff";
+var ffr=document.getElementById("settings").style.color="#fff";
+var ta=document.getElementById("one").style.color="#fff";
+var hb=document.getElementById("two").style.color="#fff";
+var ch=document.getElementById("three").style.color="#fff";
+var yd=document.getElementById("four").style.color="#fff";
+var te=document.getElementById("five").style.color="#fff";
+var fh=document.getElementById("six").style.color="#fff";
+var kh=document.getElementById("seven").style.color="#fff";
+var ig=document.getElementById("eight").style.color="#fff";
+var lh=document.getElementById("nine").style.color="#fff";
+var mh=document.getElementById("del").style.color="#fff";
+var ny=document.getElementById("dot").style.color="#fff";
+var oh=document.getElementById("zero").style.color="#fff";
+var ph=document.getElementById("perc").style.color="#fff";
+var qg=document.getElementById("equal").style.color="#fff";
+var rg=document.getElementById("home").style.color="#fff";
+var sf=document.getElementById("minus").style.color="#fff";
+var tg=document.getElementById("del").style.color="#fff";
+var u=document.getElementById("zeroo").style.color="#fff";
+var vg=document.getElementById("devide").style.color="#fff";
+var wt=document.getElementById("plus").style.color="#fff";
+var xg=document.getElementById("times").style.color="#fff";
+var yg=document.getElementById("brao").style.color="#fff";
+var zg=document.getElementById("brac").style.color="#fff";
+var screN=document.getElementById("screen").style.color="#fff";
+}
+</script>
+
+<script type="text/javascript">
+function showDefault(){
+var g=document.getElementById("cbody").style.backgroundColor="green";
+var p=document.getElementById("mysettings").style.display="none";
+var h=document.getElementById("cbody").style.visibility="visible";
+var j=document.getElementById("form").style.backgroundColor="green";
+var r=document.getElementById("settings").style.backgroundColor="green";
+var a=document.getElementById("one").style.backgroundColor="green";
+var b=document.getElementById("two").style.backgroundColor="green";
+var c=document.getElementById("three").style.backgroundColor="green";
+var d=document.getElementById("four").style.backgroundColor="green";
+var e=document.getElementById("five").style.backgroundColor="green";
+var f=document.getElementById("six").style.backgroundColor="green";
+var k=document.getElementById("seven").style.backgroundColor="green";
+var i=document.getElementById("eight").style.backgroundColor="green";
+var l=document.getElementById("nine").style.backgroundColor="green";
+var m=document.getElementById("del").style.backgroundColor="green";
+var n=document.getElementById("dot").style.backgroundColor="green";
+var o=document.getElementById("zero").style.backgroundColor="green";
+var p=document.getElementById("perc").style.backgroundColor="green";
+var q=document.getElementById("equal").style.backgroundColor="green";
+var r=document.getElementById("home").style.backgroundColor="green";
+var s=document.getElementById("minus").style.backgroundColor="green";
+var t=document.getElementById("del").style.backgroundColor="green";
+var u=document.getElementById("zeroo").style.backgroundColor="green";
+var v=document.getElementById("devide").style.backgroundColor="green";
+var w=document.getElementById("plus").style.backgroundColor="green";
+var x=document.getElementById("times").style.backgroundColor="green";
+var y=document.getElementById("brao").style.backgroundColor="green";
+var z=document.getElementById("brac").style.backgroundColor="green";
+var screeN=document.getElementById("screen").style.backgroundColor="black";
+
+var jtd=document.getElementById("form").style.color="#fff";
+var ffr=document.getElementById("settings").style.color="#fff";
+var ta=document.getElementById("one").style.color="#fff";
+var hb=document.getElementById("two").style.color="#fff";
+var ch=document.getElementById("three").style.color="#fff";
+var yd=document.getElementById("four").style.color="#fff";
+var te=document.getElementById("five").style.color="#fff";
+var fh=document.getElementById("six").style.color="#fff";
+var kh=document.getElementById("seven").style.color="#fff";
+var ig=document.getElementById("eight").style.color="#fff";
+var lh=document.getElementById("nine").style.color="#fff";
+var mh=document.getElementById("del").style.color="#fff";
+var ny=document.getElementById("dot").style.color="#fff";
+var oh=document.getElementById("zero").style.color="#fff";
+var ph=document.getElementById("perc").style.color="#fff";
+var qg=document.getElementById("equal").style.color="#fff";
+var rg=document.getElementById("home").style.color="#fff";
+var sf=document.getElementById("minus").style.color="#fff";
+var tg=document.getElementById("del").style.color="#fff";
+var u=document.getElementById("zeroo").style.color="#fff";
+var vg=document.getElementById("devide").style.color="#fff";
+var wt=document.getElementById("plus").style.color="#fff";
+var xg=document.getElementById("times").style.color="#fff";
+var yg=document.getElementById("brao").style.color="#fff";
+var zg=document.getElementById("brac").style.color="#fff";
+var screN=document.getElementById("screen").style.color="#fff";
+}</script>
+
+<script type="text/javascript">
+function showDefault(){
+var g=document.getElementById("cbody").style.backgroundColor="red";
+var p=document.getElementById("mysettings").style.display="none";
+var h=document.getElementById("cbody").style.visibility="visible";
+var j=document.getElementById("form").style.backgroundColor="red";
+var r=document.getElementById("settings").style.backgroundColor="red";
+var a=document.getElementById("one").style.backgroundColor="red";
+var b=document.getElementById("two").style.backgroundColor="red";
+var c=document.getElementById("three").style.backgroundColor="red";
+var d=document.getElementById("four").style.backgroundColor="red";
+var e=document.getElementById("five").style.backgroundColor="red";
+var f=document.getElementById("six").style.backgroundColor="red";
+var k=document.getElementById("seven").style.backgroundColor="red";
+var i=document.getElementById("eight").style.backgroundColor="red";
+var l=document.getElementById("nine").style.backgroundColor="red";
+var m=document.getElementById("del").style.backgroundColor="red";
+var n=document.getElementById("dot").style.backgroundColor="red";
+var o=document.getElementById("zero").style.backgroundColor="red";
+var p=document.getElementById("perc").style.backgroundColor="red";
+var q=document.getElementById("equal").style.backgroundColor="red";
+var r=document.getElementById("home").style.backgroundColor="red";
+var s=document.getElementById("minus").style.backgroundColor="red";
+var t=document.getElementById("del").style.backgroundColor="red";
+var u=document.getElementById("zeroo").style.backgroundColor="red";
+var v=document.getElementById("devide").style.backgroundColor="red";
+var w=document.getElementById("plus").style.backgroundColor="red";
+var x=document.getElementById("times").style.backgroundColor="red";
+var y=document.getElementById("brao").style.backgroundColor="red";
+var z=document.getElementById("brac").style.backgroundColor="red";
+var screeN=document.getElementById("screen").style.backgroundColor="black";
+
+var jtd=document.getElementById("form").style.color="#fff";
+var ffr=document.getElementById("settings").style.color="#fff";
+var ta=document.getElementById("one").style.color="#fff";
+var hb=document.getElementById("two").style.color="#fff";
+var ch=document.getElementById("three").style.color="#fff";
+var yd=document.getElementById("four").style.color="#fff";
+var te=document.getElementById("five").style.color="#fff";
+var fh=document.getElementById("six").style.color="#fff";
+var kh=document.getElementById("seven").style.color="#fff";
+var ig=document.getElementById("eight").style.color="#fff";
+var lh=document.getElementById("nine").style.color="#fff";
+var mh=document.getElementById("del").style.color="#fff";
+var ny=document.getElementById("dot").style.color="#fff";
+var oh=document.getElementById("zero").style.color="#fff";
+var ph=document.getElementById("perc").style.color="#fff";
+var qg=document.getElementById("equal").style.color="#fff";
+var rg=document.getElementById("home").style.color="#fff";
+var sf=document.getElementById("minus").style.color="#fff";
+var tg=document.getElementById("del").style.color="#fff";
+var u=document.getElementById("zeroo").style.color="#fff";
+var vg=document.getElementById("devide").style.color="#fff";
+var wt=document.getElementById("plus").style.color="#fff";
+var xg=document.getElementById("times").style.color="#fff";
+var yg=document.getElementById("brao").style.color="#fff";
+var zg=document.getElementById("brac").style.color="#fff";
+var screN=document.getElementById("screen").style.color="#fff";
+}
 </script>
 <script>
-function devInfo(){
-alert("Contact the developer via\n WhatsApp: +234-811-225-7699\n Email: raphtechclients@gmail.com\n https://twitter.com/raphaelakpofure\n https://facebook.com/raphaeltrusttech\n Call: +234-811-225-7699");}
-</script>
-<script>
-function rbug(){
-alert("Did you found any bug? please send us message on WhatsApp\n +234-811-225-7699");}
+function showBlue(){
+var g=document.getElementById("cbody").style.backgroundColor="blue";
+var p=document.getElementById("mysettings").style.display="none";
+var h=document.getElementById("cbody").style.visibility="visible";
+var j=document.getElementById("form").style.backgroundColor="blue";
+var r=document.getElementById("settings").style.backgroundColor="blue";
+var a=document.getElementById("one").style.backgroundColor="blue";
+var b=document.getElementById("two").style.backgroundColor="blue";
+var c=document.getElementById("three").style.backgroundColor="blue";
+var d=document.getElementById("four").style.backgroundColor="blue";
+var e=document.getElementById("five").style.backgroundColor="blue";
+var f=document.getElementById("six").style.backgroundColor="blue";
+var k=document.getElementById("seven").style.backgroundColor="blue";
+var i=document.getElementById("eight").style.backgroundColor="blue";
+var l=document.getElementById("nine").style.backgroundColor="blue";
+var m=document.getElementById("del").style.backgroundColor="blue";
+var n=document.getElementById("dot").style.backgroundColor="blue";
+var o=document.getElementById("zero").style.backgroundColor="blue";
+var p=document.getElementById("perc").style.backgroundColor="blue";
+var q=document.getElementById("equal").style.backgroundColor="blue";
+var r=document.getElementById("home").style.backgroundColor="blue";
+var s=document.getElementById("minus").style.backgroundColor="blue";
+var t=document.getElementById("del").style.backgroundColor="blue";
+var u=document.getElementById("zeroo").style.backgroundColor="blue";
+var v=document.getElementById("devide").style.backgroundColor="blue";
+var w=document.getElementById("plus").style.backgroundColor="blue";
+var x=document.getElementById("times").style.backgroundColor="blue";
+var y=document.getElementById("brao").style.backgroundColor="blue";
+var z=document.getElementById("brac").style.backgroundColor="blue";
+var screeN=document.getElementById("screen").style.backgroundColor="black";
 
+var jtd=document.getElementById("form").style.color="#fff";
+var ffr=document.getElementById("settings").style.color="#fff";
+var ta=document.getElementById("one").style.color="#fff";
+var hb=document.getElementById("two").style.color="#fff";
+var ch=document.getElementById("three").style.color="#fff";
+var yd=document.getElementById("four").style.color="#fff";
+var te=document.getElementById("five").style.color="#fff";
+var fh=document.getElementById("six").style.color="#fff";
+var kh=document.getElementById("seven").style.color="#fff";
+var ig=document.getElementById("eight").style.color="#fff";
+var lh=document.getElementById("nine").style.color="#fff";
+var mh=document.getElementById("del").style.color="#fff";
+var ny=document.getElementById("dot").style.color="#fff";
+var oh=document.getElementById("zero").style.color="#fff";
+var ph=document.getElementById("perc").style.color="#fff";
+var qg=document.getElementById("equal").style.color="#fff";
+var rg=document.getElementById("home").style.color="#fff";
+var sf=document.getElementById("minus").style.color="#fff";
+var tg=document.getElementById("del").style.color="#fff";
+var u=document.getElementById("zeroo").style.color="#fff";
+var vg=document.getElementById("devide").style.color="#fff";
+var wt=document.getElementById("plus").style.color="#fff";
+var xg=document.getElementById("times").style.color="#fff";
+var yg=document.getElementById("brao").style.color="#fff";
+var zg=document.getElementById("brac").style.color="#fff";
+var screN=document.getElementById("screen").style.color="#fff";
+}
 </script>
-<script>
-function about(){
-alert("Creating an application letter hasn't been easy for some individual around the globe that's the core reason Raph AI Generator was developed, You can now easily generate job application letter easily with this free software. The Raph AI Generator is user friendly that only needs some basic information from such as your name and address for easy composing. Some core functionality of Raph AI Generator is that it was built with it's users in mind, some other built-in features include outputting current date and time. The Raph AI Generator is absolutely free, you can generate as many application letter you want. for more info contact us via WhatsApp +234-811-225-7699 or via Email raphaeltrust89@gmail.com");}
+
+<script type="text/javascript">
+function showBlack(){
+var g=document.getElementById("cbody").style.backgroundColor="black";
+var p=document.getElementById("mysettings").style.display="none";
+var h=document.getElementById("cbody").style.visibility="visible";
+var j=document.getElementById("form").style.backgroundColor="black";
+var r=document.getElementById("settings").style.backgroundColor="black";
+var a=document.getElementById("one").style.backgroundColor="black";
+var b=document.getElementById("two").style.backgroundColor="black";
+var c=document.getElementById("three").style.backgroundColor="black";
+var d=document.getElementById("four").style.backgroundColor="black";
+var e=document.getElementById("five").style.backgroundColor="black";
+var f=document.getElementById("six").style.backgroundColor="black";
+var k=document.getElementById("seven").style.backgroundColor="black";
+var i=document.getElementById("eight").style.backgroundColor="black";
+var l=document.getElementById("nine").style.backgroundColor="black";
+var m=document.getElementById("del").style.backgroundColor="black";
+var n=document.getElementById("dot").style.backgroundColor="black";
+var o=document.getElementById("zero").style.backgroundColor="black";
+var p=document.getElementById("perc").style.backgroundColor="black";
+var q=document.getElementById("equal").style.backgroundColor="black";
+var r=document.getElementById("home").style.backgroundColor="black";
+var s=document.getElementById("minus").style.backgroundColor="black";
+var t=document.getElementById("del").style.backgroundColor="black";
+var u=document.getElementById("zeroo").style.backgroundColor="black";
+var v=document.getElementById("devide").style.backgroundColor="black";
+var w=document.getElementById("plus").style.backgroundColor="black";
+var x=document.getElementById("times").style.backgroundColor="black";
+var y=document.getElementById("brao").style.backgroundColor="black";
+var z=document.getElementById("brac").style.backgroundColor="black";
+var screeN=document.getElementById("screen").style.backgroundColor="gray";
+
+var jtd=document.getElementById("form").style.color="#fff";
+var ffr=document.getElementById("settings").style.color="#fff";
+var ta=document.getElementById("one").style.color="#fff";
+var hb=document.getElementById("two").style.color="#fff";
+var ch=document.getElementById("three").style.color="#fff";
+var yd=document.getElementById("four").style.color="#fff";
+var te=document.getElementById("five").style.color="#fff";
+var fh=document.getElementById("six").style.color="#fff";
+var kh=document.getElementById("seven").style.color="#fff";
+var ig=document.getElementById("eight").style.color="#fff";
+var lh=document.getElementById("nine").style.color="#fff";
+var mh=document.getElementById("del").style.color="#fff";
+var ny=document.getElementById("dot").style.color="#fff";
+var oh=document.getElementById("zero").style.color="#fff";
+var ph=document.getElementById("perc").style.color="#fff";
+var qg=document.getElementById("equal").style.color="#fff";
+var rg=document.getElementById("home").style.color="#fff";
+var sf=document.getElementById("minus").style.color="#fff";
+var tg=document.getElementById("del").style.color="#fff";
+var u=document.getElementById("zeroo").style.color="#fff";
+var vg=document.getElementById("devide").style.color="#fff";
+var wt=document.getElementById("plus").style.color="#fff";
+var xg=document.getElementById("times").style.color="#fff";
+var yg=document.getElementById("brao").style.color="#fff";
+var zg=document.getElementById("brac").style.color="#fff";
+var screN=document.getElementById("screen").style.color="#fff";
+}
 </script>
-<script src="bootstrap.js"></script>
 
+<script type="text/javascript">
+function showWhite(){
+var g=document.getElementById("cbody").style.backgroundColor="white";
+var p=document.getElementById("mysettings").style.display="none";
+var h=document.getElementById("cbody").style.visibility="visible";
+var j=document.getElementById("form").style.backgroundColor="white";
+var r=document.getElementById("settings").style.backgroundColor="white";
+var a=document.getElementById("one").style.backgroundColor="white";
+var b=document.getElementById("two").style.backgroundColor="white";
+var c=document.getElementById("three").style.backgroundColor="white";
+var d=document.getElementById("four").style.backgroundColor="white";
+var e=document.getElementById("five").style.backgroundColor="white";
+var f=document.getElementById("six").style.backgroundColor="white";
+var k=document.getElementById("seven").style.backgroundColor="white";
+var i=document.getElementById("eight").style.backgroundColor="white";
+var l=document.getElementById("nine").style.backgroundColor="white";
+var m=document.getElementById("del").style.backgroundColor="white";
+var n=document.getElementById("dot").style.backgroundColor="white";
+var o=document.getElementById("zero").style.backgroundColor="white";
+var p=document.getElementById("perc").style.backgroundColor="white";
+var q=document.getElementById("equal").style.backgroundColor="white";
+var r=document.getElementById("home").style.backgroundColor="white";
+var s=document.getElementById("minus").style.backgroundColor="white";
+var t=document.getElementById("del").style.backgroundColor="white";
+var u=document.getElementById("zeroo").style.backgroundColor="white";
+var v=document.getElementById("devide").style.backgroundColor="white";
+var w=document.getElementById("plus").style.backgroundColor="white";
+var x=document.getElementById("times").style.backgroundColor="white";
+var y=document.getElementById("brao").style.backgroundColor="white";
+var z=document.getElementById("brac").style.backgroundColor="white";
+var screeN=document.getElementById("screen").style.backgroundColor="black";
 
+var jtd=document.getElementById("form").style.color="#000";
+var ffr=document.getElementById("settings").style.color="orange";
+var ta=document.getElementById("one").style.color="#000";
+var hb=document.getElementById("two").style.color="#000";
+var ch=document.getElementById("three").style.color="#000";
+var yd=document.getElementById("four").style.color="#000";
+var te=document.getElementById("five").style.color="#000";
+var fh=document.getElementById("six").style.color="#000";
+var kh=document.getElementById("seven").style.color="#000";
+var ig=document.getElementById("eight").style.color="#000";
+var lh=document.getElementById("nine").style.color="#000";
+var mh=document.getElementById("del").style.color="#000";
+var ny=document.getElementById("dot").style.color="#000";
+var oh=document.getElementById("zero").style.color="#000";
+var ph=document.getElementById("perc").style.color="#000";
+var qg=document.getElementById("equal").style.color="#000";
+var rg=document.getElementById("home").style.color="#000";
+var sf=document.getElementById("minus").style.color="#000";
+var tg=document.getElementById("del").style.color="#000";
+var u=document.getElementById("zeroo").style.color="#000";
+var vg=document.getElementById("devide").style.color="#000";
+var wt=document.getElementById("plus").style.color="#000";
+var xg=document.getElementById("times").style.color="#000";
+var yg=document.getElementById("brao").style.color="#000";
+var zg=document.getElementById("brac").style.color="#000";
+var screN=document.getElementById("screen").style.color="#fff";
+}
+</script>
+
+<script type="text/javascript">
+function showGray(){
+var g=document.getElementById("cbody").style.backgroundColor="gray";
+var p=document.getElementById("mysettings").style.display="none";
+var h=document.getElementById("cbody").style.visibility="visible";
+var j=document.getElementById("form").style.backgroundColor="gray";
+var r=document.getElementById("settings").style.backgroundColor="gray";
+var a=document.getElementById("one").style.backgroundColor="gray";
+var b=document.getElementById("two").style.backgroundColor="gray";
+var c=document.getElementById("three").style.backgroundColor="gray";
+var d=document.getElementById("four").style.backgroundColor="gray";
+var e=document.getElementById("five").style.backgroundColor="gray";
+var f=document.getElementById("six").style.backgroundColor="gray";
+var k=document.getElementById("seven").style.backgroundColor="gray";
+var i=document.getElementById("eight").style.backgroundColor="gray";
+var l=document.getElementById("nine").style.backgroundColor="gray";
+var m=document.getElementById("del").style.backgroundColor="gray";
+var n=document.getElementById("dot").style.backgroundColor="gray";
+var o=document.getElementById("zero").style.backgroundColor="gray";
+var p=document.getElementById("perc").style.backgroundColor="gray";
+var q=document.getElementById("equal").style.backgroundColor="gray";
+var r=document.getElementById("home").style.backgroundColor="gray";
+var s=document.getElementById("minus").style.backgroundColor="gray";
+var t=document.getElementById("del").style.backgroundColor="gray";
+var u=document.getElementById("zeroo").style.backgroundColor="gray";
+var v=document.getElementById("devide").style.backgroundColor="gray";
+var w=document.getElementById("plus").style.backgroundColor="gray";
+var x=document.getElementById("times").style.backgroundColor="gray";
+var y=document.getElementById("brao").style.backgroundColor="gray";
+var z=document.getElementById("brac").style.backgroundColor="gray";
+var screeN=document.getElementById("screen").style.backgroundColor="lightgray";
+var screN=document.getElementById("screen").style.color="#000";
+}
 </script>
 </body>
 </html>
